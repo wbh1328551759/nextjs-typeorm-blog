@@ -1,0 +1,8 @@
+.wrapper {
+    background: grey;
+    border: 1px solid yellow;
+}
+
+.content {
+    border: 1px solid black;
+}

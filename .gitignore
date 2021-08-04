@@ -3,11 +3,13 @@
 # dependencies
 /node_modules
 /.pnp
+/.idea
+/.vscode
 .pnp.js
 
 # testing
 /coverage
-
+/blog-data
 # next.js
 /.next/
 /out/
