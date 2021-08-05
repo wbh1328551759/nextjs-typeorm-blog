@@ -1,14 +1,14 @@
 {
    "type": "postgres",
-   "host": "localhost",
+   "host": "192.168.99.102",
    "port": 5432,
    "username": "blog",
    "password": "",
-   "database": "blog_developmentx`",
-   "synchronize": true,
+   "database": "blog_development",
+   "synchronize": false,
    "logging": false,
    "entities": [
-      "src/entity/**/*.ts"
+      "dist/entity/**/*.js"
    ],
    "migrations": [
       "src/migration/**/*.ts"
