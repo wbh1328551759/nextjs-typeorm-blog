@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev:next": "next dev",
+    "dev": "concurrently \"yarn dev:next\" \"yarn typeorm:watch\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typeorm:build": "babel -w ./src --out-dir dist --extensions .ts,.tsx",
+    "typeorm:watch": "babel -w ./src --out-dir dist --extensions .ts,.tsx",
+    "typeorm:build": "babel ./src --out-dir dist --extensions .ts,.tsx",
     "migration:run": "typeorm migration:run",
     "migration:revert": "typeorm migration:revert"
   },
@@ -34,6 +36,7 @@
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
     "@types/ua-parser-js": "^0.7.36",
+    "concurrently": "^6.2.1",
     "eslint": "7.31.0",
     "eslint-config-next": "11.0.1",
     "typescript": "4.3.5"
