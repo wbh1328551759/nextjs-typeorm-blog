@@ -10,6 +10,7 @@
     "lint": "next lint",
     "typeorm:watch": "babel -w ./src --out-dir dist --extensions .ts,.tsx",
     "typeorm:build": "babel ./src --out-dir dist --extensions .ts,.tsx",
+    "migration:create": "typeorm migration:create",
     "migration:run": "typeorm migration:run",
     "migration:revert": "typeorm migration:revert",
     "entity:create": "typeorm entity:create"
