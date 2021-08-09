@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, TableColumn } from 'typeorm';
 
-export class AddCreatedAtAndUpdatedAt1628520037361 implements MigrationInterface {
+export class AddCreatedAtAndUpdatedAt1628526828874 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.addColumns('users', [
@@ -21,7 +21,7 @@ export class AddCreatedAtAndUpdatedAt1628520037361 implements MigrationInterface
       }),
     ]);
 
-    return  await queryRunner.addColumns('comments', [
+    return await queryRunner.addColumns('comments', [
       new TableColumn({
         name: 'createdAt', type: 'time', isNullable: false, default: 'now()'
       }),
@@ -32,12 +32,11 @@ export class AddCreatedAtAndUpdatedAt1628520037361 implements MigrationInterface
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropColumn('users', 'createdAt')
-    await queryRunner.dropColumn('users', 'updatedAt')
-    await queryRunner.dropColumn('posts', 'createdAt')
-    await queryRunner.dropColumn('posts', 'updatedAt')
-    await queryRunner.dropColumn('comments', 'createdAt')
-    return await queryRunner.dropColumn('comments', 'updatedAt')
+    await queryRunner.dropColumn('users', 'createdAt');
+    await queryRunner.dropColumn('users', 'updatedAt');
+    await queryRunner.dropColumn('posts', 'createdAt');
+    await queryRunner.dropColumn('posts', 'updatedAt');
+    await queryRunner.dropColumn('comments', 'createdAt');
+    return await queryRunner.dropColumn('comments', 'updatedAt');
   }
-
 }

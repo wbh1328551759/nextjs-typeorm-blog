@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class RenameColumns1628521329606 implements MigrationInterface {
+export class RenameColumns1628526844996 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.renameColumn('users', 'password_digest', 'passwordDigest');

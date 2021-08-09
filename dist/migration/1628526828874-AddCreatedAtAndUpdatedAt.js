@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.AddCreatedAtAndUpdatedAt1628520037361 = void 0;
+exports.AddCreatedAtAndUpdatedAt1628526828874 = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -17,12 +17,12 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 
 var _typeorm = require("typeorm");
 
-var AddCreatedAtAndUpdatedAt1628520037361 = /*#__PURE__*/function () {
-  function AddCreatedAtAndUpdatedAt1628520037361() {
-    (0, _classCallCheck2["default"])(this, AddCreatedAtAndUpdatedAt1628520037361);
+var AddCreatedAtAndUpdatedAt1628526828874 = /*#__PURE__*/function () {
+  function AddCreatedAtAndUpdatedAt1628526828874() {
+    (0, _classCallCheck2["default"])(this, AddCreatedAtAndUpdatedAt1628526828874);
   }
 
-  (0, _createClass2["default"])(AddCreatedAtAndUpdatedAt1628520037361, [{
+  (0, _createClass2["default"])(AddCreatedAtAndUpdatedAt1628526828874, [{
     key: "up",
     value: function () {
       var _up = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(queryRunner) {
@@ -137,7 +137,7 @@ var AddCreatedAtAndUpdatedAt1628520037361 = /*#__PURE__*/function () {
       return down;
     }()
   }]);
-  return AddCreatedAtAndUpdatedAt1628520037361;
+  return AddCreatedAtAndUpdatedAt1628526828874;
 }();
 
-exports.AddCreatedAtAndUpdatedAt1628520037361 = AddCreatedAtAndUpdatedAt1628520037361;
+exports.AddCreatedAtAndUpdatedAt1628526828874 = AddCreatedAtAndUpdatedAt1628526828874;
