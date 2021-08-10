@@ -56,6 +56,9 @@ var _Comment = require("./entity/Comment");
             return connection.close();
 
           case 22:
+            console.log('OK!');
+
+          case 23:
           case "end":
             return _context.stop();
         }
