@@ -1,10 +1,8 @@
 import styles from '../styles/Home.module.css';
 import React from 'react';
-import Image from 'next/image';
-import png from 'assets/images/1.png';
-import Link from 'next/link';
 import { GetServerSideProps, NextPage } from 'next';
 import { UAParser } from 'ua-parser-js';
+import { getDatabaseConnection } from '../lib/getDatabaseConnection';
 
 interface Props {
   browser: {
@@ -27,6 +25,8 @@ const Home: NextPage<Props> = (props) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const connect = await getDatabaseConnection()
+  console.log('connect')
   const ua = context.req.headers['user-agent'];
   const result = new UAParser(ua).getResult();
   return {
