@@ -1,6 +1,7 @@
 import React from 'react';
-import { getPost, getPostIds } from '../../lib/posts';
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
+import { getDatabaseConnection } from '../../lib/getDatabaseConnection';
+import { Post } from '../../src/entity/Post';
 
 interface Props {
   post: Post
@@ -11,28 +12,19 @@ const PostsShow: NextPage<Props> = (props) => {
   return (
     <div>
       <h1>{post.title}</h1>
-      <article dangerouslySetInnerHTML={ {__html: post.htmlContent} }/>
+      <article dangerouslySetInnerHTML={ {__html: post.content} }/>
     </div>
   );
 };
 
 export default PostsShow;
 
-export const getStaticPaths = async () => {
-  const idList = await getPostIds()
-  idList.map(id => ({params: {id}}))
-  return {
-    paths: idList.map(id => ({params: {id}})),
-    fallback: false
-  };
-};
-
-export const getStaticProps = async (x: any) => {
-  const id = x.params.id
-  const post = await getPost(id);
+export const getServerSideProps: GetServerSideProps<any, {id: string}> = async (context) => {
+  const connection = await getDatabaseConnection();
+  const post = await connection.manager.findOne(Post, context.params.id)
   return {
     props: {
-      post
+      post: JSON.parse(JSON.stringify(post))
     }
   };
 };
