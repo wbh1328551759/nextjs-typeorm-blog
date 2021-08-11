@@ -1,23 +1,20 @@
 import styles from '../styles/Home.module.css';
 import React from 'react';
 import { GetServerSideProps, NextPage } from 'next';
-import { UAParser } from 'ua-parser-js';
 import { getDatabaseConnection } from '../lib/getDatabaseConnection';
+import { Post } from '../src/entity/Post';
 
 interface Props {
-  browser: {
-    name: string;
-    version: string;
-    major: string;
-  }
+  posts: Post[];
 }
 
 const Home: NextPage<Props> = (props) => {
-  const {browser} = props;
-  console.log(browser);
+  const {posts} = props;
+  console.log(posts)
+
   return (
     <div className={styles.container}>
-      <h1>你的浏览器是 {browser}</h1>
+      {posts.map(post => <div key={post.id}>{post.title}</div>)}
     </div>
   );
 };
@@ -25,13 +22,14 @@ const Home: NextPage<Props> = (props) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const connect = await getDatabaseConnection()
-  console.log('connect')
-  const ua = context.req.headers['user-agent'];
-  const result = new UAParser(ua).getResult();
+  const connection = await getDatabaseConnection()
+  const posts = await connection.manager.find(Post)
+  console.log(posts[0].createdAt)
+  console.log(typeof posts[0].createdAt)
+
   return {
     props: {
-      browser: result.ua
+      posts: JSON.parse(JSON.stringify(posts))
     }
   };
 };
