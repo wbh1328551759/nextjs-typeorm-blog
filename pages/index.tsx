@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css';
-import React from 'react';
+import React  from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 import { getDatabaseConnection } from '../lib/getDatabaseConnection';
 import { Post } from '../src/entity/Post';
@@ -13,7 +13,7 @@ const Home: NextPage<Props> = (props) => {
   const {posts} = props;
   console.log(posts);
 
-  return (
+    return (
     <div className={styles.container}>
       <h1>文章列表</h1>
       {posts.map(post =>

@@ -1,7 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import { getPosts } from 'lib/posts';
 
-const Posts = async (req: NextApiRequest, res: NextApiResponse) => {
+const Posts: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const posts = await getPosts()
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
