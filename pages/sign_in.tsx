@@ -1,8 +1,10 @@
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import React, { useCallback, useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
+import { withSession } from '../lib/withSession';
+import { User } from '../src/entity/User';
 
-const SignUp: NextPage = () => {
+const SignIn: NextPage<{user: User}> = ({user}) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -15,12 +17,11 @@ const SignUp: NextPage = () => {
     e.preventDefault();
     axios.post('/api/v1/sessions', formData)
       .then(() => {
-
+        window.alert('登录成功');
       })
       .catch(error => {
         if (error.response) {
           const response: AxiosResponse = error.response;
-          console.log(response.data)
           setErrors(response.data);
         }
       });
@@ -28,6 +29,9 @@ const SignUp: NextPage = () => {
 
   return (
     <>
+      {user && <div>
+        当前登录用户为 {user.username}
+      </div>}
       <h1>登录</h1>
 
       <hr/>
@@ -64,4 +68,15 @@ const SignUp: NextPage = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
+
+export const getServerSideProps: GetServerSideProps = withSession(
+  async (context) => {
+    const user = context.req.session.get('currentUser')
+    return {
+      props: {
+        user
+      }
+    };
+  }
+);
