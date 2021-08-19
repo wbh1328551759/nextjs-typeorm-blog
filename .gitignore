@@ -6,6 +6,7 @@
 /.idea
 /.vscode
 .pnp.js
+/.env.local
 
 # testing
 /coverage
