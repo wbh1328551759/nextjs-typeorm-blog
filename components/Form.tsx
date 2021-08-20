@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, FormEventHandler } from 'react';
 
-type Field = {
+export type Field = {
   label: string,
   type: 'text' | 'password' | 'textarea',
   value: string | number,
