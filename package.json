@@ -20,6 +20,7 @@
     "@babel/core": "^7.14.8",
     "@types/node": "^16.4.11",
     "axios": "^0.21.1",
+    "github-markdown-css": "^4.0.0",
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
     "marked": "^2.1.3",

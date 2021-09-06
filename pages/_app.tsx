@@ -2,6 +2,7 @@ import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
 import React from 'react';
 import Head from 'next/head';
+import 'github-markdown-css'
 
 function MyApp({Component, pageProps}: AppProps) {
   return (

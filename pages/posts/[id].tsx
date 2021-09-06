@@ -2,6 +2,7 @@ import React from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 import { getDatabaseConnection } from '../../lib/getDatabaseConnection';
 import { Post } from '../../src/entity/Post';
+import marked from 'marked'
 
 interface Props {
   post: Post
@@ -10,10 +11,23 @@ interface Props {
 const PostsShow: NextPage<Props> = (props) => {
   const {post} = props
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <article dangerouslySetInnerHTML={ {__html: post.content} }/>
-    </div>
+    <>
+      <div className='wrapper'>
+        <h1>{post.title}</h1>
+        <article className='markdown-body' dangerouslySetInnerHTML={ {__html: marked(post.content)} }/>
+      </div>
+      <style jsx>{`
+        .wrapper{
+          margin: 16px auto;
+          max-width: 800px;
+          padding: 0 16px;
+        }
+        h1 {
+          border-bottom: 1px solid #666;
+          padding-bottom: 16px;
+        }  
+      `}</style>
+    </>
   );
 };
 
