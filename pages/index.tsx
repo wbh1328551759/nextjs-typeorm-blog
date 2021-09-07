@@ -8,7 +8,7 @@ const Home: NextPage = () => {
       <div className='cover'>
         <img className='logo' src='/logo.png' alt=""/>
         <h1>Wbh 的个人博客</h1>
-        <p className='description'>一个 div 工程师</p>
+        <p className='description'>一个 div 工程师，面向 div 编程</p>
         <p><Link href='/posts'><a>文章列表</a></Link></p>
       </div>
 

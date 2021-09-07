@@ -5,3 +5,10 @@ interface Post {
   content: string,
   htmlContent: string,
 }
+
+interface User {
+  id: number;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+}
