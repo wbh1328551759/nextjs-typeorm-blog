@@ -1,10 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { AxiosResponse } from 'axios';
+import cs from 'classnames'
 
 type Field<T> = {
   label: string;
   type: 'text' | 'password' | 'textarea';
   key: keyof T;
+  className?: string;
 }
 
 type useFormOptions<T> = {
@@ -57,13 +59,16 @@ export function useForm<T>({initFormData, fields, buttons, submit}: useFormOptio
   const form = (
     <form onSubmit={_onSubmit}>
       {fields.map(field =>
-        <div key={field.label}>
-          <label>{field.label}
+        <div key={field.label} className={cs('field', `field-${field.key}`, field.className)}>
+          <label className='label'>
+            <span className='label-text'>{field.label}</span>
             {field.type === 'textarea' ?
               <textarea
+                className='control'
                 onChange={(e) => onChange(field.key, e.target.value)}
                 value={formData[field.key].toString()}/>
               : <input
+                className='control'
                 type={field.type}
                 value={formData[field.key].toString()}
                 onChange={(e) => onChange(field.key, e.target.value)}/>
@@ -75,6 +80,25 @@ export function useForm<T>({initFormData, fields, buttons, submit}: useFormOptio
         </div>
       )}
       <div>{buttons}</div>
+      <style jsx>{`
+        .field{
+          margin: 8px 0;
+        }
+        .label{
+          display:flex;
+          line-height: 32px;
+        } 
+        .label input {
+          height: 32px;
+        }
+        .label > .label-text{
+          white-space: nowrap;
+          margin-right: 1em;
+        }
+        .label > .control{
+          width: 100%;
+        }
+      `}</style>
     </form>
   );
   return {

@@ -20,6 +20,7 @@
     "@babel/core": "^7.14.8",
     "@types/node": "^16.4.11",
     "axios": "^0.21.1",
+    "classnames": "^2.3.1",
     "github-markdown-css": "^4.0.0",
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.14.5",
     "@types/axios": "^0.14.0",
+    "@types/classnames": "^2.3.1",
     "@types/lodash": "^4.14.172",
     "@types/marked": "^2.0.4",
     "@types/md5": "^2.3.1",
