@@ -33,7 +33,7 @@
     "react-dom": "17.0.2",
     "reflect-metadata": "^0.1.13",
     "sass": "^1.36.0",
-    "typeorm": "^0.2.36",
+    "typeorm": "^0.2.37",
     "ua-parser-js": "^0.7.28"
   },
   "devDependencies": {

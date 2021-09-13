@@ -49,7 +49,6 @@ export const getServerSideProps: GetServerSideProps<any, { id: string }> = withS
     const connection = await getDatabaseConnection();
     const post = await connection.manager.findOne('Post', context.params.id);
     const currentUser = (context.req as any).session.get('currentUser') || null;
-
     return {
       props: {
         post: JSON.parse(JSON.stringify(post)),
