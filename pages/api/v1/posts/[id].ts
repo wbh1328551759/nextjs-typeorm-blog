@@ -18,6 +18,18 @@ const Posts: NextApiHandler = withSession(async (req: NextApiRequest, res: NextA
     post.content = content;
     await connection.manager.save(post);
     res.json(post);
+  } else if (req.method === 'DELETE') {
+    const id = req.query.id.toString();
+    const user = req.session.get('currentUser');
+    if (!user) {
+      res.statusCode = 401;
+      res.end();
+      return;
+    }
+    const connection = await getDatabaseConnection();
+    const result = await connection.manager.delete('Post', id)
+    res.statusCode = result.affected >= 0 ? 200 : 400;
+    res.end()
   }
 });
 
