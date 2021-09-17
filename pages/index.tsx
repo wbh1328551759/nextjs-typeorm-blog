@@ -1,12 +1,14 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
+import Img from 'next/image'
+import Logo from '../public/logo.png'
 
 const Home: NextPage = () => {
   return (
     <>
       <div className='cover'>
-        <img className='logo' src='/logo.png' alt=""/>
+        <Img className='logo' src={Logo} alt=""/>
         <h1>Wbh 的个人博客</h1>
         <p className='description'>一个 div 工程师，面向 div 编程</p>
         <p><Link href='/posts'><a>文章列表</a></Link></p>
