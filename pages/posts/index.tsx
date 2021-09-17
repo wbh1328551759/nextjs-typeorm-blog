@@ -78,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = withSession(
       Post,
       {skip: (page - 1) * perPage, take: perPage}
     );
-
+    console.log(process.env.SECRET)
     return {
       props: {
         posts: JSON.parse(JSON.stringify(posts)),

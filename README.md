@@ -42,9 +42,16 @@ node dist/seed.js
 
 ## 开发
 
-```
+```bash
 yarn dev
 // or
 npm dev
 ```
 
+## 部署
+```bash
+yarn install --production=false
+yarn build
+docker build . -t wbh-blog/node-web-app
+docker run --network=host -p 3000:3000 -d wbh-blog/node-web-app
+```
