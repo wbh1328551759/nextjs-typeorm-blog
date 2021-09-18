@@ -56,4 +56,7 @@ docker build . -t wbh-blog/node-web-app
 docker run --network=host -p 3000:3000 -d wbh-blog/node-web-app
 
 ssh blog@dev1 'sh /home/blog/app/bin/deploy.sh'
+
+git push origin main
+ssh blog@dev1 'bash -s' < bin/deploy.sh
 ```
