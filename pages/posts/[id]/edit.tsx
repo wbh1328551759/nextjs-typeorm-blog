@@ -24,6 +24,7 @@ const PostEdit: NextPage<Props> = ({id, post}: Props) => {
       request: (formData) => axios.patch(`/api/v1/posts/${id}`, {...formData, id}),
       success: () => {
         window.alert('提交成功');
+        window.location.href = '/posts'
       }
     }
   });

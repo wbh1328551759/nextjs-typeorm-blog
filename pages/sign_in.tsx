@@ -13,7 +13,10 @@ const SignIn: NextPage<{ user: User }> = ({user}) => {
       {label: '用户名', type: 'text', key: 'username'},
       {label: '密码', type: 'password', key: 'password'}
     ],
-    buttons: <button type='submit'>登录</button>,
+    buttons: <>
+      <button className='sign-in' type='submit'>登录</button>
+      <button className='sign-up' type='submit' onClick={() => window.location.href = '/sign_up'}>注册</button>
+    </>,
     submit: {
       request: (formData) => axios.post('/api/v1/sessions', formData),
       success: () => {
@@ -31,6 +34,14 @@ const SignIn: NextPage<{ user: User }> = ({user}) => {
       </div>}
       <h1>登录</h1>
       {form}
+      <style jsx global>{`
+        .sign-in {
+          margin-right: 10px;
+        }
+        .sign-up {
+          
+        }
+      `}</style>
     </>
   );
 };
