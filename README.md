@@ -60,3 +60,8 @@ ssh blog@dev1 'sh /home/blog/app/bin/deploy.sh'
 git push origin main
 ssh blog@dev1 'bash -s' < bin/deploy.sh
 ```
+
+## 安装 nginx 镜像
+```
+docker run --name nginx1 --network=host -v /home/blog/nginx.conf:/etc/nginx/conf.d/default.conf -v /home/blog/app/.next/static/:/usr/share/nginx/html/_next/static/ -d nginx:1.19.1
+```
